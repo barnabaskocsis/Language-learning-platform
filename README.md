@@ -1,5 +1,6 @@
 # Language learning platform ( Italki clone )
-Full stack webdevelopment assignment
+Beadandó feladat a 2020/2021/1 félévben meghirdetett Full stack webprogramozás tárgyhoz. A beadandó feladat keretei között egy nyelvi tanulást elősegítő applikáció kerül elkészítésre, ahol tanulók tudnak órákat venni különböző nyelveken tanároktól. Az feladat az [italki](https://www.italki.com/) nevezetű webes applikáció egy lightweight változatát készül megvalósítani.
+
 ## Feladat funkcionális követelményei:
 
   - Alkalmazás:
@@ -31,13 +32,11 @@ Full stack webdevelopment assignment
 
 ## Szakterületi fogalomjegyzék:
 
-  - SQLite
-  - REST API
-  - Angular
-  - MVC
-  - Komponens
-  - Autentikáció
-  - Autorizáció
+  - **SQLite**: A SQLite egy önálló, kisméretű, ACID-kompatibilis relációs adatbázis-kezelő rendszer és adatbázismotor.
+  - **REST(Representational State Transfer)**: Egy szoftverarchitektúra típus, erőforrások elérésének módja HTTP protokoll szemantikájára építve.
+  - **API(Application Programming Interface)**: Egy rendszer azon szolgáltatásainak és használatának dokumentációja, amelyet mások felhasználhatnak.
+  - **Angular**: Typescript alapú nyílt-forráskódú keretrendszer webes applikációk készítéséhez MVC architektúrában.
+  - **MVC(Model-View-Controller)**: Architektúrális minta, amely jól elhatárolja a modell, nézet és vezerlő komponenseket.
 
 ## Szerepkörök
 
