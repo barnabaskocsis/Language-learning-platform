@@ -1,5 +1,5 @@
 import { Collection, Entity, PrimaryKey, Property, ManyToOne } from "@mikro-orm/core";
-import { Teacher } from "./teacher";
+import { User } from "./user";
 import { Language } from "./language";
 
 // id,title,price,languageId,teacherId
@@ -14,8 +14,8 @@ export class Lesson {
   @Property()
   price!: number;
 
-  @ManyToOne(() => Teacher)
-  teacher!: Teacher;
+  @ManyToOne(() => User)
+  teacher!: User;
 
   @ManyToOne(() => Language)
   language!: Language;

@@ -1,42 +1,52 @@
 import { Collection, wrap } from "@mikro-orm/core";
 import { Router } from "express";
 import { Lesson } from "../entities/lesson";
-import { Student } from "../entities/student";
-import { Teacher } from "../entities/teacher";
+import { User, UserRole } from '../entities/user';
 import { hashPassword } from "../security/password-utils";
+import { passport } from "../security/passport";
 
 export const lessonRouter = Router();
 
 lessonRouter
   .use((req, res, next) => {
-    req.lessonRepository = req.orm.em.getRepository(Teacher);
+    req.lessonRepository = req.orm.em.getRepository(Lesson);
     next();
   })
 
   // list all sold lessons of a teacher
   .get("/:id", async (req, res) => {
-    const lessons = await req.teacherRepository!.findAll({ id: parseInt(req.params.id) });
+    const lessons = await req.lessonRepository!.findAll({ teacher_id: parseInt(req.params.id) });
     res.send(lessons);
   })
 
-  // list all booked lessons of a teacher
-  .get("", async (req, res) => {
-    const teachers = await req.teacherRepository!.findAll({
-      populate: ["languages"],
-    });
-    res.send(teachers);
+  // add new lesson for a teacher
+  .post("/newlesson", passport.authenticate('jwt', { session: false }), async (req, res) => {
+    if (req.user!.role === UserRole.Teacher) {
+      const { title, price }: AuthenticationDto = req.body;
+      const lesson = new Lesson();
+
+      wrap(lesson).assign(req.body, { em: req.orm.em });
+
+      lesson.teacher = req.orm.em.getReference(User, req.user!.id);
+
+      await req.lessonRepository!.persistAndFlush(lesson);
+
+      res.send(lesson);
+    }
+    return res.sendStatus(403);
   })
 
-  // list all booked lessons of a student
-  .get("", async (req, res) => {
+
+  // list all booked lessons of a teacher
+  /* .get("", async (req, res) => {
     const teachers = await req.teacherRepository!.findAll({
       populate: ["languages"],
     });
     res.send(teachers);
-  })
+  }) */
 
   // get one lesson by id
-  .get("/:id", async (req, res) => {
+  /* .get("/:id", async (req, res) => {
     const teacher = await req.teacherRepository!.findOne(
       { id: parseInt(req.params.id) },
       {
@@ -47,7 +57,7 @@ lessonRouter
       return res.sendStatus(404);
     }
     res.send(teacher);
-  })
+  }) */
 
   /*// endpoint to register new teachers
   .post("/apply", async (req, res) => {
@@ -73,13 +83,6 @@ lessonRouter
   })*/
 
 interface AuthenticationDto {
-  username: string;
-  password: string;
-  first_name: string;
-  last_name: string;
-  is_native: boolean;
-  country: string;
-  intro: string;
-  languages: Collection<string>;
-  role: string;
+  title: string;
+  price: number;
 }
