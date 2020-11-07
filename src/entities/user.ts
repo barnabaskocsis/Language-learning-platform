@@ -45,14 +45,15 @@ export class User {
   @ManyToMany(() => Language, "users", { owner: true })
   languages = new Collection<Language>(this);
 
-  @OneToMany(() => Lesson, (lesson) => lesson.teacher)
-  lessons = new Collection<Lesson>(this);
-
   @OneToMany(() => StudentLesson, (studentlesson) => studentlesson.user)
   studentlessons = new Collection<StudentLesson>(this);
 
-  @OneToMany(() => Homework, (homework) => homework.user)
+  @OneToMany(() => Lesson, (lesson) => lesson.teacher)
+  lessons = new Collection<Lesson>(this);
+
+  @OneToMany(() => Homework, (homework) => homework.teacher)
   homeworks = new Collection<Homework>(this);
+
 }
 
 export enum UserRole {

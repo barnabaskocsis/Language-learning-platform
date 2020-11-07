@@ -3,7 +3,6 @@ import { User } from "./user";
 import { Language } from "./language";
 import { StudentLesson } from "../entities/studentlesson";
 
-// id,title,price,languageId,teacherId
 @Entity()
 export class Lesson {
   @PrimaryKey()

@@ -2,7 +2,6 @@ import { Collection, Entity, PrimaryKey, Property, ManyToOne, OneToMany } from "
 import { User } from "../entities/user";
 import { Lesson } from "./lesson";
 
-// id, userId, lessonId, date
 @Entity()
 export class StudentLesson {
   @PrimaryKey()
