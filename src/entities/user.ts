@@ -1,7 +1,8 @@
 import { Collection, Entity, PrimaryKey, Property, Enum, ManyToMany, OneToMany } from "@mikro-orm/core";
 import { Language } from "./language";
 import { Lesson } from "./lesson";
-
+import { StudentLesson } from "./studentlesson";
+import { Homework } from "./homework";
 
 @Entity()
 export class User {
@@ -47,6 +48,11 @@ export class User {
   @OneToMany(() => Lesson, (lesson) => lesson.teacher)
   lessons = new Collection<Lesson>(this);
 
+  @OneToMany(() => StudentLesson, (studentlesson) => studentlesson.user)
+  studentlessons = new Collection<StudentLesson>(this);
+
+  @OneToMany(() => Homework, (homework) => homework.user)
+  homeworks = new Collection<Homework>(this);
 }
 
 export enum UserRole {

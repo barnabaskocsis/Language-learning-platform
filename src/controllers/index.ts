@@ -10,3 +10,5 @@ routes.use('/users', userRouter);
 routes.use('/lessons', lessonRouter);
 
 //routes.use('/issues', passport.authenticate('jwt', { session: false }), issuesRouter);
+
+// HA EZT OLVASOD KAPSZ EGY MILKA CSOKIT

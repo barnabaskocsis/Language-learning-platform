@@ -37,6 +37,22 @@ userRouter
     res.send(user);
   })
 
+  //get user profile
+  //protected
+  .post("/profile", passport.authenticate('jwt', { session: false }), async (req, res) => {
+    let authUser = req.orm.em.getReference(User, req.user!.id);
+    const user = await req.userRepository!.findOne(
+      { id: authUser.id },
+      {
+        populate: ["languages"],
+      }
+    );
+    if (!user) {
+      return res.sendStatus(404);
+    }
+    res.send(user);
+  })
+
   // endpoint to register new user
   .post("/signup", async (req, res) => {
     const { username, password, first_name, last_name, country, is_native, type, intro, role }: AuthenticationDto = req.body;

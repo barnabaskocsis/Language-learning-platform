@@ -12,8 +12,6 @@ declare global {
     interface Request {
       orm: MikroORM<IDatabaseDriver>;
       userRepository?: EntityRepository<ApplicationUser>;
-      studentRepository?: EntityRepository<ApplicationUser>;
-      teacherRepository?: EntityRepository<ApplicationUser>;
       lessonRepository?: EntityRepository<ApplicationUser>;
     }
   }

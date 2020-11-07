@@ -1,6 +1,7 @@
-import { Collection, Entity, PrimaryKey, Property } from "@mikro-orm/core";
+import { Collection, Entity, PrimaryKey, Property, ManyToOne } from "@mikro-orm/core";
+import { User } from "./user";
 
-// id,name,teacherId,userId,title,description,path_to_solution
+// id,name,userId,title,description,path_to_solution
 @Entity()
 export class Homework {
   @PrimaryKey()
@@ -10,5 +11,14 @@ export class Homework {
   name!: string;
 
   @Property()
-  password!: string;
+  title!: string;
+
+  @Property()
+  description!: string;
+
+  @Property()
+  path_to_solution!: string;
+
+  @ManyToOne(() => User)
+  user!: User;
 }
