@@ -52,16 +52,13 @@ homeworkRouter
     const uuid = req.params.uuid;
     const { name, title, description }: AuthenticationDto = req.body;
     const homework = await req.homeworkRepository!.findOne({ uuid: req.params.uuid, owner_id: teacherid });
-    if (!homework) {
-      return res.sendStatus(404);
-    }
     if (homework) {
       const updateCount = await req.homeworkRepository?.nativeUpdate({ uuid }, req.body);
       if (updateCount) {
         return res.sendStatus(200);
       }
     }
-    return res.sendStatus(401);
+    return res.sendStatus(500);
   })
 
   //teachers use to delete a homework
@@ -70,16 +67,13 @@ homeworkRouter
     const teacherid = authUser.id;
     const uuid = req.params.uuid;
     const homework = await req.homeworkRepository!.findOne({ uuid: req.params.uuid, owner_id: teacherid });
-    if (!homework) {
-      return res.sendStatus(404);
-    }
     if (homework) {
       const deletedCount = await req.homeworkRepository?.nativeDelete({ uuid });
       if (deletedCount) {
         return res.sendStatus(200);
       }
     }
-    return res.sendStatus(401);
+    return res.sendStatus(500);
   });
 
 interface AuthenticationDto {

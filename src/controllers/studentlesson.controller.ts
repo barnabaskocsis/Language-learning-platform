@@ -34,7 +34,7 @@ studentlessonRouter
 
     await req.studentLessonRepository!.persistAndFlush(studentlesson);
 
-    res.send(studentlesson);
+    res.sendStatus(200);
   })
 
   // students use to delete a booked lesson
@@ -43,16 +43,13 @@ studentlessonRouter
     const studentid = authUser.id;
     const id = req.params.id;
     const lesson = await req.studentLessonRepository!.findOne({ id: parseInt(req.params.id) ,user_id: studentid});
-    if (!lesson) {
-      return res.sendStatus(401);
-    }
     if (lesson) {
       const deletedCount = await req.studentLessonRepository?.nativeDelete({ id });
       if (deletedCount) {
         return res.sendStatus(200);
       }
     }
-    return res.sendStatus(404);
+    return res.sendStatus(500);
   });
 
 interface AuthenticationDto {
