@@ -1,7 +1,7 @@
 # Language learning platform ( Italki clone )
 Beadandó feladat a 2020/2021/1 félévben meghirdetett Full stack webprogramozás tárgyhoz. A beadandó feladat keretei között egy nyelvi tanulást elősegítő applikáció kerül elkészítésre, ahol tanulók tudnak órákat venni különböző nyelveken tanároktól. Az feladat az [italki](https://www.italki.com/) nevezetű webes applikáció egy lightweight változatát készül megvalósítani.
 
-### A new wiki page is avaiable for the application,chek it out here: [Wiki](https://github.com/barnabaskocsis/Language-learning-platform/wiki)
+### A new wiki page is avaiable for the application,check it out here: [Wiki](https://github.com/barnabaskocsis/Language-learning-platform/wiki)
 
 ## Feladat funkcionális követelményei:
 
