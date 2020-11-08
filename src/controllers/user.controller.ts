@@ -99,7 +99,6 @@ userRouter
 
     await req.userRepository!.persistAndFlush(user);
     res.send(user);
-    return res.sendStatus(200);
   })
 
   // endpoint to sign in user
