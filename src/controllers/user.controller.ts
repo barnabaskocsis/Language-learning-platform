@@ -18,7 +18,7 @@ userRouter
     const users = await req.userRepository!.findAll({
       populate: ["languages","lessons"],
     });
-    res.send(users);
+    res.status(200).send(users);
   })
 
   // get one user by id
@@ -32,7 +32,7 @@ userRouter
     if (!user) {
       res.sendStatus(404);
     }
-    res.send(user);
+    res.status(200).send(user);
   })
 
   // list all teachers who teaches {language}
@@ -40,7 +40,7 @@ userRouter
     const user = await req.userRepository!.find(
       { languages: [req.params.language], role: UserRole.Teacher },
     );
-    res.send(user);
+    res.status(200).send(user);
   })
 
   // returns teacher's course page of {language} by {id}
@@ -51,7 +51,7 @@ userRouter
     if (!user) {
       res.sendStatus(404);
     }
-    res.send(user);
+    res.status(200).send(user);
   })
 
   //get user profile
@@ -63,7 +63,7 @@ userRouter
         populate: ["languages"],
       }
     );
-    res.send(user);
+    res.status(200).send(user);
   })
 
   // endpoint to register new user
@@ -92,7 +92,7 @@ userRouter
     }
 
     await req.userRepository!.persistAndFlush(user);
-    res.send(user);
+    res.status(200).send(user);
   })
 
   // endpoint to sign in user
@@ -106,7 +106,7 @@ userRouter
     if (hashedPassword !== user.password) {
       res.sendStatus(401);
     }
-    res.send(generateJwt(user));
+    res.status(200).send(generateJwt(user));
   })
 
   // update signed in user's profile
