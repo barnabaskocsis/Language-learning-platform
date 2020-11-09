@@ -1,15 +1,7 @@
-jobs:
-  include:
-  - language: node_js
-    node_js: node
-    cache:
-      directories:
-      - node_modules
-    after_success: npm build
-    deploy:
-      skip_cleanup: true
-      provider: heroku
-      api_key:
-        secure: CeYFfG0bHXt4MsRngpmlml1Laciqqo80d5twiNirVEeZwtbyO2DRScf+O0Z5Bx0On1o8/NwA3vgH5PQOw+dpqePu+m6Z2bEryO4uTUtm06Z1Ze8p6bjcrN6/6yu4tQJC2eOkH2olFzOuW9fti0n8g7NDf1u1HR8vRJA9rL05rbMDl57nlH2I2ttitwtTyg5MfSe8T5n6gfGmB2ijtmUxWJkxo7mUpP7ySJ6kep4fE6DS8vA4IolBPKQqTjsrxGFGy94bUDI2tkFLa8gDvn0hVsN1JQGNlhvRg3/BY6AMqbo322vgkyskmLSmPNtqB2iNn+v6bl03qEQvK70KvXRx+mv4frjV2o7djtWK4xR1z1gKluu0rnsb4WB8PsHd2ip03DgFGlmk8feSbn2Y64E+JI3eC/iEqnsrTsWe07P3acQQrchXZkee02E0GRlLUD8iwBWfDRyrZng8TjVXWDXxkETZTUOs5nvSccRwPI+ab1SA36ad3lovD8woIOrbmZ7w2DT/0AHjgQtLXqqcpCzlyCYpZsxdkl4rE1YkHFbjHxYdQUZWXbCzwpD3BaEY83MmuhH3pvA9Hnw4w6Rg/T63ElrhzYJSmUdTl3obaEhHCYycfzXHgjLwtNft0Lygii+hQsER/o9T5DEHje7rwCS3XYPMBzFk9QGH7hP4dIm3GXY=
-        app: italkiclone
-      on: main
+deploy:
+  skip_cleanup: true
+  provider: heroku
+  api_key:
+    secure: XPfVyMZZo5/43IDGmgSDyUumf8MH9oDyb/a1ob8SOXw8mTmaVMKrCWKD0jXrJRKBYVCFZACJWEzPz6LBDV+VhNsND9TxBMqmPIZUuPE0kiW37hVAl0TxR0ycNCP5iNK0EZnRtCPjo61EP2JUEHT6XfrPFaxCLhvy6pndCLgGC9BmKbQje0JkCEJoP+9X/k28d+FQ/dWwVZqlTn81zobnnQZA7En2CmRj8M2YhyWqyAbtIrD2jpsO5zWHoV7HELg+SX56CDGqQ4KnC005UiK5xMV/MSoo5UGev85A4hLorRZQyJ1EEZM2ByCMXTPMtVSd+TKRHKQBlLWB8bJc+Z4zTUHx2YBsWC+vKKPvr3guRpU812kcJB0lABwBqb0w7H6FOIAUwbK3mpiu2qfVOiVvEEGX/BgRgCDfgWtuG7A4oANyfPkthTMjYCGwczEpUhlY/STwK3clwGSD+Go2Y5HBHmwe30VeqFbZVZOnv/kASN/Bld5U2olbAsBWqG6HCLINZic3erQnqxzaR+c4gRhFtJzagDeSC+Qk5HxbOWRqqqfx8ReS9ZmHGR2sglyrNbGp3sSAaCVfkMvx3wvu8y/vUQm2Oa/l9yd/yUDd5ru00cjC7EKEJnTFaG3Oy71MP9VJpNY5wown+0ybFM1qh+6v1MroA9/eqT26RFvHGpBgLDM=
+  app: italkiclone
+  on: main
