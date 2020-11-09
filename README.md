@@ -3,6 +3,8 @@ Beadandó feladat a 2020/2021/1 félévben meghirdetett Full stack webprogramoz�
 
 ### A new wiki page is avaiable for the application,check it out here: [Wiki](https://github.com/barnabaskocsis/Language-learning-platform/wiki)
 
+### Heroku has been set up, you can reach it from here: http://italkiclone.herokuapp.com/
+
 ## Feladat funkcionális követelményei:
 
   - Alkalmazás:
