@@ -18,7 +18,7 @@ userRouter
     const users = await req.userRepository!.findAll({
       populate: ["languages","lessons"],
     });
-    res.status(200).send(users);
+    return res.status(200).send(users);
   })
 
   // get one user by id
@@ -30,9 +30,9 @@ userRouter
       }
     );
     if (!user) {
-      res.sendStatus(404);
+      return res.sendStatus(404);
     }
-    res.status(200).send(user);
+    return res.status(200).send(user);
   })
 
   // list all teachers who teaches {language}
@@ -40,7 +40,7 @@ userRouter
     const user = await req.userRepository!.find(
       { languages: [req.params.language], role: UserRole.Teacher },
     );
-    res.status(200).send(user);
+    return res.status(200).send(user);
   })
 
   // returns teacher's course page of {language} by {id}
@@ -49,9 +49,9 @@ userRouter
       { id: parseInt(req.params.id),  languages: [req.params.language], role: UserRole.Teacher },
     );
     if (!user) {
-      res.sendStatus(404);
+      return res.sendStatus(404);
     }
-    res.status(200).send(user);
+    return res.status(200).send(user);
   })
 
   //get user profile
@@ -63,7 +63,7 @@ userRouter
         populate: ["languages"],
       }
     );
-    res.status(200).send(user);
+    return res.status(200).send(user);
   })
 
   // endpoint to register new user
@@ -73,7 +73,7 @@ userRouter
 
     // check if user exists
     if (user) {
-      res.sendStatus(409);
+      return res.sendStatus(409);
     }
 
     const hashedPassword = await hashPassword(password);
@@ -92,7 +92,7 @@ userRouter
     }
 
     await req.userRepository!.persistAndFlush(user);
-    res.sendStatus(200);
+    return res.sendStatus(200);
   })
 
   // endpoint to sign in user
@@ -100,13 +100,13 @@ userRouter
     const { username, password }: AuthenticationDto = req.body;
     const user = await req.userRepository!.findOne({ username });
     if (!user) {
-      res.sendStatus(404);
+      return res.sendStatus(404);
     }
     const hashedPassword = await hashPassword(password);
     if (hashedPassword !== user.password) {
-      res.sendStatus(401);
+      return res.sendStatus(401);
     }
-    res.status(200).send(generateJwt(user));
+    return res.status(200).send(generateJwt(user));
   })
 
   // update signed in user's profile
@@ -116,9 +116,9 @@ userRouter
     const { first_name, last_name, country, is_native, type, intro }: AuthenticationDto = req.body;
     const updateCount = await req.userRepository?.nativeUpdate({ id }, req.body);
     if (updateCount) {
-      res.sendStatus(200);
+      return res.sendStatus(200);
     }
-    res.sendStatus(500);
+    return res.sendStatus(500);
   })
 
   // deletes signed in user
@@ -127,9 +127,9 @@ userRouter
     const id = authUser.id;
     const deletedCount = await req.userRepository?.nativeDelete({ id });
     if (deletedCount) {
-      res.sendStatus(200);
+      return res.sendStatus(200);
     }
-    res.sendStatus(500);
+    return res.sendStatus(500);
   });
 
 interface AuthenticationDto {
