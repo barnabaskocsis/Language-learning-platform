@@ -25,7 +25,7 @@ homeworkRouter
   // users use to access a homework page by its uuid
   .get("/:uuid", async (req, res) => {
     const homework = await req.homeworkRepository!.find({ uuid: req.params.uuid });
-    res.send(homework);
+    res.send(homework); //TODO return?
   })
 
   // teachers use to create new homeworks for students
