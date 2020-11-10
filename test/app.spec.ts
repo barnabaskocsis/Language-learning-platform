@@ -3,7 +3,7 @@ import supertest from 'supertest';
 import { TeacherType, User, UserRole } from '../src/entities/user';
 
 describe('Language Learning Platform', () => {
-  const user = { id:3, username: 'hgyozo', password: 'mester', first_name:'test', last_name:'user', role: 'TEACHER', createdAt: 20201109, updatedAt: 20201109,languages:[1], lessons:[1]};
+  const user = { id:3, username: 'hgyozo', password: 'mester',email: 'hgyozo@elte.hu', first_name:'test', last_name:'user', role: 'TEACHER', createdAt: 20201109, updatedAt: 20201109,languages:[1], lessons:[1]};
 
     let requestHandle: supertest.SuperTest<supertest.Test>;
   
