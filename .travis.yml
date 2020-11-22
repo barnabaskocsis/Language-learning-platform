@@ -5,6 +5,7 @@ jobs:
     cache:
       directories:
       - node_modules
+    before_install: cd backend
     after_success: npm build
 deploy:
   skip_cleanup: true
