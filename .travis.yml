@@ -10,7 +10,7 @@ deploy:
   provider: heroku
   api_key:
     secure: mVifE/szpWUXT1q8iy0KXCcMM0hbpBoK3ketbhwjbma+wvMkceaRKTjDbnL89LG8M3ODEiH+rD+eaGdnhO0Cn6igz+qP7guot2hZiKYAQFcCYokAG2CEnTY4vucT5Rte8ahe7yG002rZTEKukws8vuiq0X6bwOfS22Srn7tEEchseKk0v49EfpK6/aUzWdcGphn9uMAvLpEcCMCSQHSI2fhU/3beHX0eZW1LQtXdpOaKK/8BCpRH+W6SCXpqGPACkCyS3VGXKTZpIHC0SSBf2Ua+azVW5a2+SNGo4rAOLNMGnUUywsaoWD/7c+UZZnLogyenZ6BxwDtI/mdSqZGQl40lMgeViHc3EX+b68YdkxfZCTSaW+v+KeL/QN7zbVUjFnUOhtRGFIdtLc9e+WFxvc9lBiKTsVE1TmRS8rmbe6vjv/V9cco/ws2XMUqZOLYjfCGcT2WH3mvtpw9sBuXma2OnVTpmPHM0fYIH4oWPG0DlK7gUzCJHYcxlY50RLCbuPQVA52hL/djQDyyQgYt0XcC2FPYjcrkRT44TlZlNIC/U3eN/Cte0N6Gs9qilxJ/eTDj74aIaK5CR1OuwmzbSbfZGsqVxijvzFveFTQ3r6efIvLirmlfV6dE6NCGD9oSBVvnBObiFOMWcsF+5lPkbn6dfuch1SCY9AEiZi0A5/YI=
-  app: Language-learning-platform
+  app: italkiclone
   on:
     repo: barnabaskocsis/Language-learning-platform
     branch: main
