@@ -16,7 +16,7 @@ lessonRouter
   // return all sold lessons of a teacher by {language} by {id}
   .get("/:id/:language", async (req, res) => {
     const lessons = await req.lessonRepository!.find(
-      { teacher_id: parseInt(req.params.id), language: parseInt(req.params.language)  },
+      { teacher_id: parseInt(req.params.id), lesson_language: parseInt(req.params.language)  },
     );
     if(!lessons){
       res.sendStatus(404);
@@ -27,14 +27,14 @@ lessonRouter
   // teachers use to create new lesson type
   .post("/newlesson", passport.authenticate("jwt", { session: false }), async (req, res) => {
     if (req.user!.role === UserRole.Teacher) {
-      const { title, price }: AuthenticationDto = req.body;
+      const { title, price, lesson_language }: AuthenticationDto = req.body;
       const lesson = new Lesson();
 
       wrap(lesson).assign(req.body, { em: req.orm.em });
 
       lesson.teacher = req.orm.em.getReference(User, req.user!.id);
 
-      const language = lesson.language;
+      const language = lesson.lesson_language;
       if (language) {
         (language: number) => req.orm.em.merge(language);
       }
@@ -80,4 +80,5 @@ lessonRouter
 interface AuthenticationDto {
   title: string;
   price: number;
+  lesson_language: number;
 }

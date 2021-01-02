@@ -17,6 +17,6 @@ export class Language {
   @ManyToMany(() => User, user => user.languages)
   users = new Collection<User>(this);
 
-  @OneToMany(() => Lesson, (lesson) => lesson.language)
+  @OneToMany(() => Lesson, (lesson) => lesson.lesson_language)
   lessons = new Collection<Lesson>(this);
 }
