@@ -19,8 +19,7 @@ Beadandó feladat a 2020/2021/1 félévben meghirdetett Full stack webprogramoz�
 
   - Tanár:
     - A tanárok naptárjaikban jelezhetik mikor érnek rá órát tartani
-    - A tanárok feltölthetnek fájlokat 
-    - A tanárok kiírhatnak házikat és javíthatják őket
+    - A tanárok kiírhatnak házikat
 
 ## Feladat nem funkcionális követelményei:
 
