@@ -16,8 +16,6 @@ Beadandó feladat a 2020/2021/1 félévben meghirdetett Full stack webprogramoz�
     - Van lehetősége nyelvet választani
     - Tanulóként lehet szűrni a tanárok között különböző szempontok alapján
     - Tud órákat foglalni
-    - Van egy felület kommunikálni a tanárral
-    - Beadhat megoldásokat házikra
 
   - Tanár:
     - A tanárok naptárjaikban jelezhetik mikor érnek rá órát tartani
