@@ -45,7 +45,6 @@ Beadandó feladat a 2020/2021/1 félévben meghirdetett Full stack webprogramoz�
   - Bejelentkezett felhasználó:
     * **Tanuló**: profillal rendelkezik és hozzáfér az oldal tanulóknak szánt funkcióihoz
     * **Tanárok**: profillal rendelkezik és hozzáfér az oldal tanároknak szánt funkcióihoz
-    * **Admin**: törölhet regisztrált felhasználókat
     
 # Fejlesztők:
 
