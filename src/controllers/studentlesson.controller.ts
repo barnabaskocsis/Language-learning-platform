@@ -18,23 +18,26 @@ studentlessonRouter
   // students use to check their booked lessons
   .get("/", async (req, res) => {
     const authUser = req.orm.em.getReference(User, req.user!.id);
-    const studentlessons = await req.studentLessonRepository!.findAll({ id: authUser.id });
+    const studentlessons = await req.studentLessonRepository!.findAll(
+      {
+        populate: ["lesson"],
+      },
+      { id: authUser.id }
+    );
     res.send(studentlessons);
   })
 
-  	// returns all booked dates of a teacher's lessons by teacher {id}  and lesson {id}
-    .get("/bookedDates/:id", async (req, res) => {
-      const studentlessons = await req.studentLessonRepository!.findAll(
-        { lesson_id: parseInt(req.params.id)  },
-      );
-      if(!studentlessons){
-        res.sendStatus(404);
-      }
-      res.send(studentlessons);
-    })
+  // returns all booked dates of a teacher's lessons by teacher {id}  and lesson {id}
+  .get("/bookedDates/:id", async (req, res) => {
+    const studentlessons = await req.studentLessonRepository!.findAll({ lesson_id: parseInt(req.params.id) });
+    if (!studentlessons) {
+      res.sendStatus(404);
+    }
+    res.send(studentlessons);
+  })
 
   // students use to book a lesson by {lesson_id}
-  .post("/book/:id",async (req, res) => {
+  .post("/book/:id", async (req, res) => {
     const { date }: AuthenticationDto = req.body;
     const studentlesson = new StudentLesson();
 
@@ -53,7 +56,7 @@ studentlessonRouter
     const authUser = req.orm.em.getReference(User, req.user!.id);
     const studentid = authUser.id;
     const id = req.params.id;
-    const lesson = await req.studentLessonRepository!.findOne({ id: parseInt(req.params.id) ,user_id: studentid});
+    const lesson = await req.studentLessonRepository!.findOne({ id: parseInt(req.params.id), user_id: studentid });
     if (lesson) {
       const deletedCount = await req.studentLessonRepository?.nativeDelete({ id });
       if (deletedCount) {
