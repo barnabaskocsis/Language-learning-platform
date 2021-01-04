@@ -37,7 +37,7 @@ userRouter
 
   // list all teachers who teaches {language}
   .get("/teachers/:language", async (req, res) => {
-    const user = await req.userRepository!.find({ languages: [req.params.language], role: UserRole.Teacher });
+    const user = await req.userRepository!.find({languages: [req.params.language], role: UserRole.Teacher }, { populate: ["languages", "lessons"] });
     return res.status(200).send(user);
   })
 

@@ -22,6 +22,17 @@ studentlessonRouter
     res.send(studentlessons);
   })
 
+  	// returns all booked dates of a teacher's lessons by teacher {id}  and lesson {id}
+    .get("/bookedDates/:id", async (req, res) => {
+      const studentlessons = await req.studentLessonRepository!.findAll(
+        { lesson_id: parseInt(req.params.id)  },
+      );
+      if(!studentlessons){
+        res.sendStatus(404);
+      }
+      res.send(studentlessons);
+    })
+
   // students use to book a lesson by {lesson_id}
   .post("/book/:id",async (req, res) => {
     const { date }: AuthenticationDto = req.body;
