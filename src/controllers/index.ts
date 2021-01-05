@@ -16,6 +16,6 @@ routes.use("/homeworks", passport.authenticate("jwt", { session: false }), homew
 
 //routes.use('/issues', passport.authenticate('jwt', { session: false }), issuesRouter);
 
-// (\_ _/)
-// (=^.^=)
-// (;;)(;;)
+// (\_ _/)   _\/_
+// (=^.^=)   \  /
+// (;;)(;;)   \/
